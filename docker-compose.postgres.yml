@@ -1,0 +1,15 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres:13
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: dev_user
+      POSTGRES_PASSWORD: Ck^F=L_g?h[RSH3DKy%SfgqiG>R=
+    volumes:
+      - postgresdb:/var/lib/postgresql/data
+
+volumes:
+  postgresdb:

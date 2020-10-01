@@ -1,0 +1,29 @@
+version: '3.6'
+services:
+  webapi:
+    build: .
+    networks:
+      - postgres_net
+    ports:
+      - "5000:80"
+    environment:
+      ConnectionStrings__Default: "User ID=dev_user;password=Ck^F=L_g?h[RSH3DKy%SfgqiG>R=;Server=postgres;Port=5432;Database=CityManager;Integrated Security=true;Pooling=true;"
+    depends_on: 
+      - postgres
+
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: dev_user
+      POSTGRES_PASSWORD: Ck^F=L_g?h[RSH3DKy%SfgqiG>R=
+    networks:
+      - postgres_net
+    volumes:
+      - postgresdb:/var/lib/postgresql/data
+
+networks: 
+  postgres_net:
+
+volumes:
+  postgresdb:
